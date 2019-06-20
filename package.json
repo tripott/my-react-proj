@@ -1,0 +1,24 @@
+{
+  "name": "my-react-proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier \"src/**/*.{js,html}\" --write --no-semi --single-quote"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tripott/my-react-proj.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tripott/my-react-proj/issues"
+  },
+  "homepage": "https://github.com/tripott/my-react-proj#readme",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}
