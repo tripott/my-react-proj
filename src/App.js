@@ -9,12 +9,12 @@ const Pet = ({ name, animal, breed }) => {
 const App = () => {
   return React.createElement('div', {}, [
     React.createElement('h1', {}, 'Adopt Me!'),
-    React.createElement(Pet, { name: 'Tucker', animal: 'Dog', breed: 'Mutt' }),
-    React.createElement(Pet, { name: 'Dash', animal: 'Dog', breed: 'Mutt' }),
+    React.createElement(Pet, { name: 'Tom', animal: 'Dog', breed: 'Mutt' }),
+    React.createElement(Pet, { name: 'Dash', animal: 'Cat', breed: 'Mutt' }),
     React.createElement(Pet, {
       name: 'Tootles',
-      animal: 'Cat',
-      breed: 'Tabby'
+      animal: 'Dog',
+      breed: 'Minx'
     }),
     React.createElement(Pet, {
       name: 'Freddy',
