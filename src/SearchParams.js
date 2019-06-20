@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
-import { ANIMALS } from '@frontendmasters/pet'
+import React, { useState, useEffect } from 'react'
+import pet, { ANIMALS } from '@frontendmasters/pet'
 
 const SearchParams = () => {
   const [location, setLocation] = useState('Seattle, WA')
   const [animal, setAnimal] = useState('All')
   const [breed, setBreed] = useState('')
   const [breeds, setBreeds] = useState([])
+
+  useEffect(() => {
+    setBreeds([])
+    setBreed('')
+
+    pet.breeds(animal).then(result => {
+      const catNames = result.breeds.map(catObj => catObj.name)
+      setBreeds(catNames)
+    })
+  }, [animal])
 
   return (
     <div className="search-params">
@@ -22,7 +32,7 @@ const SearchParams = () => {
         <label htmlFor="animal">
           Animal
           <select
-            id="animal"
+            id={animal}
             value={animal}
             onChange={e => setAnimal(e.target.value)}
             onBlur={e => setAnimal(e.target.value)}
@@ -35,6 +45,7 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
+
         <label htmlFor="breed">
           Breed
           <select
