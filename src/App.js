@@ -24,9 +24,6 @@ const App = () => {
   return (
     <div>
       <h1>Adopt Me!</h1>
-      <Pet name="Tucker" animal="Dog" breed="Carolina Ditch Dog" />
-      <Pet name="Dash" breed="Terrier" />
-      <Pet name="Tootles" animal="Cat" breed="Tabby" />
       <SearchParams />
     </div>
   )
