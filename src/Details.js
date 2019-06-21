@@ -21,6 +21,7 @@ const Details = ({ id }) => {
         setSelectedPet(animal)
         setIsLoading(false)
         setIsSuccessful({ success: true })
+        // throw new Error('Oh no!')
       })
       .catch(err => {
         setSelectedPet({})
@@ -38,15 +39,23 @@ const Details = ({ id }) => {
   if (isLoading === false && isSuccessful.success === true) {
     DisplayTheStuff = (
       <div>
-        <h1>Details</h1>
+        <h1>Name: {selectedPet.animal.name}</h1>
+        <h2>Breed: {selectedPet.animal.breeds.primary}</h2>
+        <h2>Gender: {selectedPet.animal.gender}</h2>
+        <p>{selectedPet.animal.description}</p>
+        {/* <pre>
+          <code>{JSON.stringify(selectedPet, null, 4)}</code>
+        </pre> */}
       </div>
     )
   } else if (isLoading === true) {
     DisplayTheStuff = (
       <div>
-        <h1>Loading... hang on...</h1>
+        <h1>Loading...hang on...</h1>
       </div>
     )
+  } else {
+    DisplayTheStuff = <div>Whoops, couldnt get the pet.</div>
   }
 
   return DisplayTheStuff
