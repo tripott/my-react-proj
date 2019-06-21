@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/tripott/my-react-proj#readme",
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-import": "^2.17.3",
@@ -32,7 +33,19 @@
   },
   "dependencies": {
     "@frontendmasters/pet": "^1.0.3",
+    "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 Firefox versions",
+    "last 2 FirefoxAndroid versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 Edge versions",
+    "last 2 Opera versions",
+    "last 2 OperaMobile versions"
+  ]
 }
