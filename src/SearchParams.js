@@ -15,8 +15,6 @@ const SearchParams = () => {
   const [petResults, setPetResults] = useState([])
 
   async function requestPets() {
-    console.log({ location, breed, type: animal })
-
     const { animals } = await pet.animals({ location, breed, type: animal })
 
     setPetResults(animals || [])
@@ -30,7 +28,7 @@ const SearchParams = () => {
       const catNames = result.breeds.map(catObj => catObj.name)
       setBreeds(catNames)
     })
-  }, [animal])
+  }, [animal, setBreed, setBreeds])
 
   return (
     <div className="search-params">
