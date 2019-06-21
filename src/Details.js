@@ -7,26 +7,49 @@ const Details = ({ id }) => {
   // can be found from the API
 
   const [selectedPet, setSelectedPet] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSuccessful, setIsSuccessful] = useState({
+    success: false,
+    err: null
+  })
 
   async function getPet(petId) {
-    const { animal } = await pet.animal(petId)
-    setSelectedPet(animal)
-    console.log({ animal })
+    // const { animal } = await pet.animal(petId)
+    pet
+      .animal(petId)
+      .then(animal => {
+        setSelectedPet(animal)
+        setIsLoading(false)
+        setIsSuccessful({ success: true })
+      })
+      .catch(err => {
+        setSelectedPet({})
+        setIsLoading(false)
+        setIsSuccessful({ success: false, err })
+      })
   }
 
   useEffect(() => {
     getPet(id)
   }, [])
 
-  return (
-    <div>
-      <h1>Details</h1>
+  let DisplayTheStuff = null
 
-      {/* <h1>{animal}</h1>
-      <h2>{breed}</h2>
-      <h2>{location}</h2> */}
-    </div>
-  )
+  if (isLoading === false && isSuccessful.success === true) {
+    DisplayTheStuff = (
+      <div>
+        <h1>Details</h1>
+      </div>
+    )
+  } else if (isLoading === true) {
+    DisplayTheStuff = (
+      <div>
+        <h1>Loading... hang on...</h1>
+      </div>
+    )
+  }
+
+  return DisplayTheStuff
 }
 
 export default Details
