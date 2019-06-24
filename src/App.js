@@ -4,6 +4,7 @@ import Pet from './Pet'
 import SearchParams from './SearchParams'
 import { Router, Link } from '@reach/router'
 import Details from './Details'
+import Cats from './Cats'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Router>
         <SearchParams path="/" />
         <Details path="/details/:id" />
+        <Cats path="/cats" />
       </Router>
     </div>
   )
