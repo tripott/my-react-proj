@@ -3,20 +3,26 @@ import fetch from 'isomorphic-fetch'
 
 const Cats = ({ id }) => {
   const [cats, setCats] = useState([])
-  const [renderStatus, setRenderStatus] = useState('loading')
+  const [viewStatus, setViewStatus] = useState('loading')
 
   async function getCats() {
     fetch('http://localhost:5555/cats', {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
-      .then(response => response.json())
+      .then(cats => cats.json())
       .then(cats => {
+        console.log({ cats })
         setCats(cats)
-        setRenderStatus('ok')
+        setViewStatus('ok')
       })
       .catch(err => {
         setCats([])
-        setRenderStatus('error')
+        setViewStatus('error')
+
+        console.log({ err })
       })
   }
 
@@ -26,7 +32,7 @@ const Cats = ({ id }) => {
 
   let DisplayTheStuff = null
 
-  if (renderStatus === 'ok') {
+  if (viewStatus === 'ok') {
     DisplayTheStuff = (
       <div>
         {cats.map(cat => (
@@ -34,7 +40,7 @@ const Cats = ({ id }) => {
         ))}
       </div>
     )
-  } else if (renderStatus === 'loading') {
+  } else if (viewStatus === 'loading') {
     DisplayTheStuff = (
       <div>
         <h1>Loading...hang on...</h1>
